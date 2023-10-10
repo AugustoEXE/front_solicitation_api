@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	* {
+		@apply font-inclusive-sans;
+		@apply text-stone-200;
+		@apply caret-violet-950;
+	}
+	body {
+		@apply bg-zinc-800;
+	}
+	::selection{
+		@apply bg-violet-600;
+		@apply text-stone-200;
+	}
+}
