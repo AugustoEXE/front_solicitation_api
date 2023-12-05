@@ -11,13 +11,13 @@
 	let error: string;
 	let visible: boolean
 	function handleSubmmit(): void {
-		if (accept) {
+		if (accept || !accept) {
 			const loginData = {
 				login,
 				password,
 				accept
 			};
-			console.table(loginData);
+			window.location.href = '/home'
 		} else {
 			console.info('woejfbwef')
 			error = 'É necessario aceitar os termos de serviço e privacidade'
@@ -53,7 +53,7 @@
 				/>
 
 				<div class="mt-5 w-2/3">
-					<input type="checkbox" bind:checked={accept} /> Li e aceito os
+					<input type="checkbox" bind:checked={accept}/> Li e aceito os
 					<a href="/termos" class="text-violet-200 underline hover:text-violet-300"
 						>Termos de serviço e privacidade</a
 					>
