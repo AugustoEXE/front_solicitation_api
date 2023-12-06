@@ -4,6 +4,8 @@
 	import Pencil from 'svelte-material-icons/Pencil.svelte';
 	import Plus from 'svelte-material-icons/Plus.svelte';
 	import Input from '../../../components/form/input.svelte';
+	import ArrowLeft from 'svelte-material-icons/ArrowLeft.svelte'
+
 	let turmas = [
 		{
 			id: 1,
@@ -89,4 +91,9 @@
 			</table>
 		</fieldset>
 	</div>
+	<a href="/admin">
+		<button class="flex place-items-center justify-center btn bg-violet-500 mt-5">
+			<ArrowLeft/> Voltar
+		</button>
+	</a>
 </div>

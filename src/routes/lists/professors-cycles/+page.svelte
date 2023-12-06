@@ -6,25 +6,23 @@
 	import Input from '../../../components/form/input.svelte';
 	import ArrowLeft from 'svelte-material-icons/ArrowLeft.svelte'
 
-	let disciplinas = [
+	let doc_cycles = [
 		{
-			id: 1,
-			name: 'discipline',
+			cycle_id: 1,
+			professor_id: 2,
+			level: 'superior',
 		},
 		{
-			id: 2,
-			name: 'discipline2',
+			cycle_id: 3,
+			professor_id: 4,
+			level: 'medio',
 		},
-		{
-			id: 3,
-			name: 'discipline3',
-		}
+	
 	];
-		let name:any, discipline:any
-		
+		let cycle_id: number, professor_id:number, level:string
+
 	function handleSubmmit(){
-		console.log([name, discipline])
-		disciplinas = [...disciplinas, {id: 1, name}]
+		doc_cycles = [...doc_cycles, { cycle_id, professor_id, level }]
 	}
 </script>
 
@@ -40,8 +38,44 @@
 
 				<div class="" on:submit={handleSubmmit}>
 					<form method="dialog" class="grid grid-cols-4 gap-2 w-11/12">
+						<div class="col-span-2 grid m-5 w-full">
+							<label for="" class=" text-left">Professor: </label>
+							<select
+								class="h-10 text-stone-200 bg-neutral-700 rounded p-2 border-2 border-zinc-900"
+								name="tipo"
+								bind:value={professor_id}
+							>
+								<select />
+								<option value="-1">Selecione...</option>
+								<option value="1">Superior</option>
+								<option value="2">Médio</option>
+							</select>
+						</div>
+						<div class="col-span-2 grid m-5 w-full">
+							<label for="" class=" text-left">Ciclo Letivo: </label>
+							<select
+								class="h-10 text-stone-200 bg-neutral-700 rounded p-2 border-2 border-zinc-900"
+								name="tipo"
+								bind:value={cycle_id}
+							>
+								<select />
+								<option value="-1">Selecione...</option>
+								<option value="1">Superior</option>
+								<option value="2">Médio</option>
+							</select>
+						</div>
 						<div class="col-span-4 grid m-5 w-full">
-							<Input name="Nome" bind:value={name}/>
+							<label for="" class=" text-left">Nível: </label>
+							<select
+								class="h-10 text-stone-200 bg-neutral-700 rounded p-2 border-2 border-zinc-900"
+								name="tipo"
+								bind:value={level}
+							>
+								<select />
+								<option value="-1">Selecione...</option>
+								<option value="superior">Superior</option>
+								<option value="medio">Médio</option>
+							</select>
 						</div>
 						<div class="col-span-1 grid m-5 w-full">
 							<button class="btn bg-red-500">Cancelar</button>
@@ -64,16 +98,18 @@
 				<!-- head -->
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Nome</th>
+						<th>professor</th>
+						<th>Ciclo</th>
+						<th>Nível</th>
 						<th>Açoes</th>
 					</tr>
 				</thead>
 				<tbody>
-					{#each disciplinas as disciplina}
+					{#each doc_cycles as doc_cycle}
 						<tr class="border-b border-zinc-500 even:bg-zinc-900">
-							<th>{disciplina.id}</th>
-							<td>{disciplina.name}</td>
+							<td>{doc_cycle.professor_id}</td>
+							<td>{doc_cycle.cycle_id}</td>
+							<td>{doc_cycle.level}</td>
 							<td>
 								<button class="btn bg-red-500 my-2"><TrashCan /></button>
 								<button class="btn bg-blue-500 my-2"><Pencil /></button>

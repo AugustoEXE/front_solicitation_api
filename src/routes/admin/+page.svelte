@@ -15,10 +15,10 @@
         <Card img={classe} legend="Cursos" route={'/lists/courses'}></Card>
         <Card img={classe} legend="Turmas" route={'/lists/classes'}></Card>
         <Card img={classe} legend="Ciclos Letivos" route={'/lists/cycles'}></Card>
-        <Card img={classe} legend="Disciplinas" route={''}></Card>
+        <Card img={classe} legend="Disciplinas" route={'/lists/disciplines'}></Card>
         <Card img={user} legend="Usuarios" route={'/lists/users'}></Card>
-        <Card img={cap} legend="Coordenadores" route={''}></Card>
-        <Card img={cap} legend="Docentes" route={''}></Card>
-        <Card img={cap} legend="Docentes e Ciclo letivos" route={''}></Card>
-        <Card img={classe} legend="Ofertas" route={''}></Card>        
+        <Card img={cap} legend="Coordenadores" route={'/lists/coordinators'}></Card>
+        <Card img={cap} legend="Docentes" route={'/lists/professors'}></Card>
+        <Card img={cap} legend="Docentes e Ciclo letivos" route={'/lists/professors-cycles'}></Card>
+        <Card img={classe} legend="Ofertas" route={'/lists/offers'}></Card>        
     </div>

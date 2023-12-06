@@ -4,6 +4,8 @@
 	import Pencil from 'svelte-material-icons/Pencil.svelte';
 	import Plus from 'svelte-material-icons/Plus.svelte';
 	import Input from '../../../components/form/input.svelte';
+	import ArrowLeft from 'svelte-material-icons/ArrowLeft.svelte'
+
 	let usr = [
 
 	];
@@ -48,7 +50,7 @@
 		<button class="btn bg-violet-500 mr-4 w-32" onclick="my_modal_4.showModal()"><Plus /></button>
 		<dialog id="my_modal_4" class="modal bg-transparent backdrop-blur transition duration-150">
 			<div class="modal-box w-11/12 max-w-5xl bg-zinc-900 rounded-xl">
-				<h3 class="font-bold text-lg">Cadastre uma usuario!</h3>
+				<h3 class="font-bold text-lg">Cadastre um usuario!</h3>
 
 				<div class="" on:submit={handleSubmmit}>
 					<form method="dialog" class="grid grid-cols-4 gap-2 w-11/12">
@@ -122,7 +124,7 @@
 				</div>
 			</div>
 		</dialog>
-		<p>Adicionar novo turma</p>
+		<p>Adicionar novo usuario</p>
 	</div>
 
 	<div class="overflow-x-auto">
@@ -158,4 +160,9 @@
 			</table>
 		</fieldset>
 	</div>
+	<a href="/admin">
+		<button class="flex place-items-center justify-center btn bg-violet-500 mt-5">
+			<ArrowLeft/> Voltar
+		</button>
+	</a>
 </div>
