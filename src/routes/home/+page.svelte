@@ -25,7 +25,7 @@
 		</div>
 		<div class="flex justify-evenly flex-row">
 			<div class="inline hover:scale-105 hover:transition">
-				<a href="/" class="hover:scale-150 hover:transition inline">
+				<a href="/lists/solicitations" class="hover:scale-150 hover:transition inline">
 					<div
 						class="max-w-sm rounded overflow-hidden shadow-lg bg-gradient-to-b from-neutral-900 via-neutral-800 to-purple-500 w-80 h-[28rem]"
 					>

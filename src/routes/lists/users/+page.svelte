@@ -5,42 +5,84 @@
 	import Plus from 'svelte-material-icons/Plus.svelte';
 	import Input from '../../../components/form/input.svelte';
 	import ArrowLeft from 'svelte-material-icons/ArrowLeft.svelte'
+	import { onMount } from 'svelte';
+	import axios from 'axios';
 
-	let usr = [
-
-	];
-	let name: string,
-		password: string,
+	let users:any = [], docente:any;
+	let nome: string,
+		senha: string,
 		chefia: boolean,
 		login: string,
 		siape: number,
 		chefStart: string,
 		chefEnd: string,
 		level: string,
+		loading: boolean = true,
+		admin:number,
         role: string;
 
 	function handleRadio(event: any) {
 		chefia = event.value;
 	}
 
+	onMount(() => {
+		getData();
+	});
+
+	function getData() {
+		axios.get('http://127.0.0.1:3000/users').then((res) => {
+			users = res.data;
+		});
+
+	}
+
 	function handleSubmmit() {
-        role = chefia ? "chefia" : "docente"
-        const userData = {
-            login, password, role
-        }
+		loading = true;
+		//@ts-ignore
+		const papel = role == 1 ? 'admin' : 'professor'
+		const dataUser = {
+			nome: nome,
+			siape: siape,
+			usuario:{
+				create:{
+					login:login,
+					senha:senha,
+					papel:papel
+				}
+			}
+		};
+		axios.post('http://127.0.0.1:3000/user', { dataUser }).then((res) => {
+			users = [...users, res.data];
+			loading = false;
+		});
+	}
 
-        const docenteData = {
-            name, siape
-        }
+	function deleteItem(id: number) {
+		loading = true;
+		axios.delete(`http://127.0.0.1:3000/turma/${id}`).then(() => {
+			users = users.filter((item) => item.id !== id);
+			loading = false;
+		});
+	}
 
-        const chefData = {
-            chefStart, chefEnd, level
-        }
-        if(chefia){
-            console.log(chefData)
-        }
-        usr = [...userData, ...docenteData, ...chefData]
-}
+// 	function handleSubmmit() {
+//         role = chefia ? "chefia" : "docente"
+//         const userData = {
+//             login, password, role
+//         }
+
+//         const docenteData = {
+//             name, siape
+//         }
+
+//         const chefData = {
+//             chefStart, chefEnd, level
+//         }
+//         if(chefia){
+//             console.log(chefData)
+//         }
+//         usr = [...userData, ...docenteData, ...chefData]
+// }
 </script>
 
 <div class="m-auto w-3/4 text-center h-screen text-neutral-300 mb-5">
@@ -58,15 +100,27 @@
 							<Input name="Login" bind:value={login} />
 						</div>
 						<div class="col-span-2 grid m-5 w-full">
-							<Input name="Senha" bind:value={password} />
+						<Input name="Senha" type="password" bind:value={senha} />
 						</div>
 						<div class="col-span-2 grid m-5 w-full">
-							<Input name="Nome" bind:value={name} />
+							<Input name="Nome" bind:value={nome} />
 						</div>
 						<div class="col-span-2 grid m-5 w-full">
 							<Input name="Siape" bind:value={siape} type="number" />
 						</div>
-
+						<div class="col-span-4 grid m-5 w-full">
+							<label for="" class=" text-left">Administrador: </label>
+							<select
+								class="h-10 text-stone-200 bg-neutral-700 rounded p-2 border-2 border-zinc-900"
+								name="tipo"
+								bind:value={admin}
+							>
+								<select />
+								<option value="-1">Selecione...</option>
+								<option value="1">sim</option>
+								<option value="0">não</option>
+							</select>
+						</div>
 						<div class="col-span-2 grid m-5 w-full">
 							<p>Docente é chefia?</p>
 						</div>
@@ -145,7 +199,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each usr as user}
+					{#each users as user}
 						<tr class="border-b border-zinc-500 even:bg-zinc-900">
 							<th>{user.id}</th>
 							<td>{user.name}</td>

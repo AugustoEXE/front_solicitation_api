@@ -6,7 +6,7 @@
 	import Input from '../../../components/form/input.svelte';
 	import ArrowLeft from 'svelte-material-icons/ArrowLeft.svelte'
 
-	let doc_cycles = [
+	let offers = [
 		{
 			cycle_id: 1,
 			professor_id: 2,
@@ -25,7 +25,7 @@
 		let cycle_id: number, professor_id:number, class_id:number, discipline_id:number
 
 	function handleSubmmit(){
-		doc_cycles = [...doc_cycles, { cycle_id, professor_id, class_id, discipline_id }]
+		offers = [...offers, { cycle_id, professor_id, class_id, discipline_id }]
 	}
 </script>
 
@@ -116,16 +116,18 @@
 					<tr>
 						<th>professor</th>
 						<th>Ciclo</th>
-						<th>Nível</th>
+						<th>Turma</th>
+						<th>Disciplina</th>
 						<th>Açoes</th>
 					</tr>
 				</thead>
 				<tbody>
-					{#each doc_cycles as doc_cycle}
+					{#each offers as offer}
 						<tr class="border-b border-zinc-500 even:bg-zinc-900">
-							<td>{doc_cycle.professor_id}</td>
-							<td>{doc_cycle.cycle_id}</td>
-							<td>{doc_cycle.level}</td>
+							<td>{offer.professor_id}</td>
+							<td>{offer.cycle_id}</td>
+							<td>{offer.class_id}</td>
+							<td>{offer.discipline_id}</td>
 							<td>
 								<button class="btn bg-red-500 my-2"><TrashCan /></button>
 								<button class="btn bg-blue-500 my-2"><Pencil /></button>

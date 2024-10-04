@@ -36,7 +36,7 @@
 				class="grid place-items-center grid-cols-1 gap-1 mt-16 w-full"
 			>
 				<label for="" class="w-2/3 text-left m-0"
-					><Account class="display: inline" size="30" />Username:</label
+					><Account class="display: inline" size="30" />SIAPE:</label
 				>
 				<input
 					type="text"

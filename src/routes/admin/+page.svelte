@@ -11,7 +11,7 @@
         <div class="col-span-5">
             <p class=" text-center font-ancient text-6xl mt-5 p-0 mb-0">O que deseja fazer?</p>
         </div>
-        <Card img={contract} legend="Solicitações" route={''}></Card>
+        <Card img={contract} legend="Solicitações" route={'/lists/solicitations'}></Card>
         <Card img={classe} legend="Cursos" route={'/lists/courses'}></Card>
         <Card img={classe} legend="Turmas" route={'/lists/classes'}></Card>
         <Card img={classe} legend="Ciclos Letivos" route={'/lists/cycles'}></Card>
